@@ -1,16 +1,32 @@
 <!doctype html>
 <html>
   <head>
-    <title>Chess</title>
+    <title>Arch Chess</title>
     <link rel="stylesheet" href="lib/chessboard-0.3.0.min.css">
-    <link rel="stylesheet" href="/default.css" />
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="default.css">
   </head>
   <body>
-    <div id='gameBoard'></div>       
+    <header>
+      <p>Arch Chess</p>
+    </header>
+
+    <!-- Game board -->
+    <div class="board">
+      <div id="a8" class="blank" style="grid-area: 8/a;" onclick="myFunction(this.id)"></div>
+      
+    </div>
+
+    <div id='gameBoard' style="width: 400px; display: none;"></div>       
+
     <script src="lib/chess.min.js"></script> 
     <script src="lib/chessboard-0.3.0.min.js"></script> 
     <script src="lib/jquery-1.11.1.js"></script> 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/default.js"></script>
+    <script src="default.js"></script>
+    <script src="game.js"></script>
   </body>
 </html>
+
+
+ 
