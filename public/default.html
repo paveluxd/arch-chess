@@ -6,15 +6,31 @@
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="default.css">
   </head>
+  
   <body>
     <header>
       <p>Arch Chess</p>
     </header>
 
     <!-- Game board -->
-    <div class="board">
-      <div id="a8" class="blank" style="grid-area: 8/a;" onclick="myFunction(this.id)"></div>
-      
+    <div class="board"></div>
+
+    <div class="selection">
+        <div id="pawn" class="pawn" onclick="moveClass(this)"></div>
+        <div id="knight" class="knight" onclick="moveClass(this)"></div>
+        <div id="bishop" class="bishop" onclick="moveClass(this)"></div>
+        <div id="rook" class="rook" onclick="moveClass(this)"></div>
+        <div id="queen" class="queen" onclick="moveClass(this)"></div>
+        <div id="king" class="king" onclick="moveClass(this)"></div>
+        <div id="wall" class="wall" onclick="moveClass(this)"></div>
+        <div id="bomb" class="bomb" onclick="moveClass(this)"></div>
+        <div id="ballista" class="ballista" onclick="moveClass(this)"></div>
+        <div id="portal" class="portal" onclick="moveClass(this)"></div>
+        <div id="prince" class="prince" onclick="moveClass(this)"></div>
+        <div id="rogue" class="rogue" onclick="moveClass(this)"></div>
+        <div id="archer" class="archer" onclick="moveClass(this)"></div>
+        <div id="necr" class="necr" onclick="moveClass(this)"></div>
+        <div id="blank" class="blank" style =" width: 84px; font-size:14px;"onclick="moveClass(this)"><p style="margin: auto;">Clear cell</p></div>
     </div>
 
     <div id='gameBoard' style="width: 400px; display: none;"></div>       

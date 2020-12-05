@@ -1,8 +1,53 @@
+/* Figures */
+.pawn      {background-image: url("img/pawn.svg");}
+.pawnW     {background-image: url("img/pawn-w.svg");}
+
+.knight    {background-image: url("img/knight.svg");}
+.knightW   {background-image: url("img/knight-w.svg");}
+
+.bishop    {background-image: url("img/bishop.svg");}
+.bishopW   {background-image: url("img/bishop-w.svg");}
+
+.rook      {background-image: url("img/rook.svg");}
+.rookW     {background-image: url("img/rook-w.svg");}
+
+.queen     {background-image: url("img/queen.svg");}
+.queenW    {background-image: url("img/queen-w.svg");}
+
+.king      {background-image: url("img/king.svg");}
+.kingW     {background-image: url("img/king-w.svg");}
+
+.necr      {background-image: url("img/necr.svg");}
+.necrW     {background-image: url("img/necr-w.svg");}
+
+.rogue     {background-image: url("img/rogue.svg");}
+.rogueW    {background-image: url("img/rogue-w.svg");}
+
+.archer    {background-image: url("img/archer.svg");}
+.archerW   {background-image: url("img/archer-w.svg");}
+
+.bomb      {background-image: url("img/bomb.svg");}
+.bombW     {background-image: url("img/bomb-w.svg");}
+
+.ballista  {background-image: url("img/ballista.svg");}
+.ballistaW {background-image: url("img/ballista-w.svg");}
+
+.portal    {background-image: url("img/portal.svg");}
+.portalW   {background-image: url("img/portal-w.svg");}
+
+.wall      {background-image: url("img/wall.svg");}
+.wallW     {background-image: url("img/wall-w.svg");}
+
+.prince    {background-image: url("img/prince.svg");}
+.princeW   {background-image: url("img/prince-w.svg");}
+
+/* Main css */
 body {
 	display: flex;
 	flex-direction: column;
 	width:  100vw;
 	min-height: 100vh;
+	font-family: sans-serif;
 }
 
 header {
@@ -15,18 +60,31 @@ header * {
 	margin: auto 0 auto 12px;
 }
 
-.p{
-	background-image: url("img/p.svg");
-	background-position: center;
-  	background-repeat: no-repeat;
-  	background-size: cover;
+.selection{
+	display: flex;
+	width: 900px;
+	flex-wrap: wrap;
+	position: fixed;
+	bottom: 8px;
+	left: 8px;
 }
 
-.K {
-	background-image: url("img/K.svg");
+.selection div{
+	height: 48px;
+	width: 48px;
+	border-radius: 6px;
+	margin: 0 4px 4px 0;
+	display: flex;
+	background-color: rgba(0,0,0,0.17);
+
 	background-position: center;
   	background-repeat: no-repeat;
-  	background-size: cover;
+	background-size: cover;
+	cursor: pointer;
+}
+
+.selection div:hover{
+	background-color: rgba(0, 255, 170, 0.514);
 }
 
 .board {
@@ -36,8 +94,8 @@ header * {
 	margin: auto;
 
 	display: grid;
-	grid-template-rows: repeat( 8, 1fr);
-	grid-template-columns: [a] 1fr [b] 1fr [c] 1fr [d] 1fr [e] 1fr [f] 1fr [g] 1fr [h] 1fr;
+	grid-template-rows: [row8] 1fr [row7] 1fr [row6] 1fr [row5] 1fr [row4] 1fr [row3] 1fr [row2] 1fr [row1] 1fr;
+	grid-template-columns: [colA] 1fr [colB] 1fr [colC] 1fr [colD] 1fr [colE] 1fr [colF] 1fr [colG] 1fr [colH] 1fr;
 
 	background-image: url("img/board.svg");
 	background-position: center;
@@ -49,19 +107,26 @@ header * {
 	width:  100%;
 	height: 100%;
 	transition: all 150ms;
+	color: rgba(0,0,0,0.36);
+	font-size: 12px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
 }
 
 .board *:hover{
 	box-shadow: 1px 1px 12px rgba(0,0,0,0.17);
 	background-color: rgba(0, 255, 170, 0.514);
+	cursor: pointer;
 }
 
 .selected {
 	box-shadow: 1px 1px 12px rgba(0,0,0,0.17);
 	background-color: rgba(255, 196, 0, 0.863);
 	transition: all 150ms;
-}
-
-.blank{
-	/* border: 1px solid red; */
 }

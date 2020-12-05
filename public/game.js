@@ -1,29 +1,73 @@
 // Create a fucking board
 function genBoard(){
-    var cell = document.createElement("div");
-    rows=["1","2","3","4","5","6","7","8"]
-    columns=["a","b","c","d","e","f","g","h"]
-    let rowId, columnId
-    for( i=0; i < rows.length; i++){
-        var rowId = rows[i]
 
-        for( i=0; i<8; i++){
+    var rows = ["row8","row7","row6","row5","row4","row3","row2","row1"]
+    var columns = ["colA","colB","colC","colD","colE","colF","colG","colH"]
+    var rowId, cell = null
+    for( i=0; i < 8; i++){
+        rowId = rows[i]
 
+        for( b=0; b < columns.length; b++){
+            cell = document.createElement("div")
+
+            cell.setAttribute("style", `grid-area: ${rowId}/${columns[b]};`)
+            cell.id=`${rowId}${columns[b]}`
+            cell.classList="blank"
+            cell.setAttribute("onclick", "select(this)")
+            cell.innerHTML = `${columns[b].split('')[3]}${rowId.split('')[3]}`;
+
+            document.querySelector(".board").appendChild(cell)
         }
-    }
-    cell.id="a7";
-    cell.classList="blank"
-    cell.setAttribute("style", "grid-area: 7/a;");
-    cell.setAttribute("onclick", "myFunction(this.id)");
-    document.querySelector(".board").appendChild(cell);
+    }  
 }
 
 genBoard()
 
+var targetElem = null
+var sourceElem = null
 
-function myFunction(elem) {
-    var element = document.getElementById(elem);
-    // element.classList.add("selected");
-    element.classList.toggle("selected");
-    // console.log(elem)
-  }
+function moveClass(elem){
+    sourceElem = document.getElementById(elem.id)
+    targetElem.classList = elem.classList[0]
+    targetElem = null;
+}
+
+function select(elem) {
+    
+    // Clear selection from previous cell
+    if(sourceElem !== null){
+        sourceElem.classList.remove('selected')
+    }
+    
+    // New selection
+    document.getElementById(elem.id).classList.add("selected"); 
+
+    
+    //Add figures
+    if(sourceElem !== null && sourceElem.classList[0] !== 'blank'){
+        document.getElementById(elem.id).classList.add(sourceElem.classList[0])
+        document.getElementById(elem.id).classList.remove('blank')
+        console.log(sourceElem)
+    }
+    
+    // Overwrite source element
+    sourceElem = document.getElementById(elem.id)
+    
+    //Move pieces
+
+    
+    // Save cell as target
+    targetElem = document.getElementById(elem.id)
+
+
+    // if(targetElem !== null && elem.classList !== 'blank'){
+    //     selectedCell = document.getElementById(elem.id)
+    //     selectedCell.classList = targetElem.classList
+    //     targetElem.classList = 'blank'
+    //     // targetElem = null
+    // }
+    // else{
+          
+
+    // }
+}
