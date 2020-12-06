@@ -4,7 +4,7 @@
 // const { emit } = require("nodemon")
 
 // Frontend socket var
-var socket = io.connect('http://localhost:4000')
+var socket = io.connect('https://arch-chess.herokuapp.com/' || 'http://localhost:4000')
 
 // Sends data to the server
 function emitBoard(boardString){
