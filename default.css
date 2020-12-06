@@ -1,45 +1,47 @@
 /* Figures */
+.deleteIco {background-image: url("img/delete.svg");}
+
 .pawn      {background-image: url("img/pawn.svg");}
-.pawnW     {background-image: url("img/pawn-w.svg");}
+.pawnW     {background-image: url("img/pawnW.svg");}
 
 .knight    {background-image: url("img/knight.svg");}
-.knightW   {background-image: url("img/knight-w.svg");}
+.knightW   {background-image: url("img/knightW.svg");}
 
 .bishop    {background-image: url("img/bishop.svg");}
-.bishopW   {background-image: url("img/bishop-w.svg");}
+.bishopW   {background-image: url("img/bishopW.svg");}
 
 .rook      {background-image: url("img/rook.svg");}
-.rookW     {background-image: url("img/rook-w.svg");}
+.rookW     {background-image: url("img/rookW.svg");}
 
 .queen     {background-image: url("img/queen.svg");}
-.queenW    {background-image: url("img/queen-w.svg");}
+.queenW    {background-image: url("img/queenW.svg");}
 
 .king      {background-image: url("img/king.svg");}
-.kingW     {background-image: url("img/king-w.svg");}
+.kingW     {background-image: url("img/kingW.svg");}
 
 .necr      {background-image: url("img/necr.svg");}
-.necrW     {background-image: url("img/necr-w.svg");}
+.necrW     {background-image: url("img/necrW.svg");}
 
 .rogue     {background-image: url("img/rogue.svg");}
-.rogueW    {background-image: url("img/rogue-w.svg");}
+.rogueW    {background-image: url("img/rogueW.svg");}
 
 .archer    {background-image: url("img/archer.svg");}
-.archerW   {background-image: url("img/archer-w.svg");}
+.archerW   {background-image: url("img/archerW.svg");}
 
 .bomb      {background-image: url("img/bomb.svg");}
-.bombW     {background-image: url("img/bomb-w.svg");}
+.bombW     {background-image: url("img/bombW.svg");}
 
 .ballista  {background-image: url("img/ballista.svg");}
-.ballistaW {background-image: url("img/ballista-w.svg");}
+.ballistaW {background-image: url("img/ballistaW.svg");}
 
 .portal    {background-image: url("img/portal.svg");}
-.portalW   {background-image: url("img/portal-w.svg");}
+.portalW   {background-image: url("img/portalW.svg");}
 
 .wall      {background-image: url("img/wall.svg");}
-.wallW     {background-image: url("img/wall-w.svg");}
+.wallW     {background-image: url("img/wallW.svg");}
 
 .prince    {background-image: url("img/prince.svg");}
-.princeW   {background-image: url("img/prince-w.svg");}
+.princeW   {background-image: url("img/princeW.svg");}
 
 /* Main css */
 body {
@@ -48,34 +50,61 @@ body {
 	width:  100vw;
 	min-height: 100vh;
 	font-family: sans-serif;
+	font-size: 16px;
+	overflow: hidden;
+}
+
+button{
+	border: none;
+	background-color: rgba(0, 0, 0, 0.10);
+	width: fit-content;
+	padding: 12px 12px;
+	border-radius: 3px;
+	color: rgba(0,0,0,0.87);
+
+	white-space: nowrap;
+}
+
+button:hover{
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.17);
 }
 
 header {
-	height: 48px;
 	display: flex;
 	position: fixed;
+	width: calc(100vw - 24px);
 }
 
 header * {
-	margin: auto 0 auto 12px;
+	margin: auto 0 auto 4px;
 }
 
-.selection{
+header img{
+	margin: auto auto auto 24px;
+}
+
+.board-container{
+	margin: auto;
 	display: flex;
-	width: 900px;
-	flex-wrap: wrap;
-	position: fixed;
-	bottom: 8px;
-	left: 8px;
+	flex-direction: column;
 }
 
-.selection div{
-	height: 48px;
-	width: 48px;
+.figure-menu{
+	display: flex;
+	margin: 0 auto;
+}
+
+/* Hides menu */
+.hide{
+	display: none;
+}
+
+.figure-menu div{
+	height: 36px;
+	width: 36px;
 	border-radius: 6px;
-	margin: 0 4px 4px 0;
 	display: flex;
-	background-color: rgba(0,0,0,0.17);
 
 	background-position: center;
   	background-repeat: no-repeat;
@@ -83,21 +112,21 @@ header * {
 	cursor: pointer;
 }
 
-.selection div:hover{
-	background-color: rgba(0, 255, 170, 0.514);
+.figure-menu div:hover{
+	background-color: rgba(0, 0, 0, 0.17);
 }
 
 .board {
 	width:  544px;
 	height: 544px;
 	border-radius: 4px;
-	margin: auto;
+	margin: 12px auto;
 
 	display: grid;
 	grid-template-rows: [row8] 1fr [row7] 1fr [row6] 1fr [row5] 1fr [row4] 1fr [row3] 1fr [row2] 1fr [row1] 1fr;
 	grid-template-columns: [colA] 1fr [colB] 1fr [colC] 1fr [colD] 1fr [colE] 1fr [colF] 1fr [colG] 1fr [colH] 1fr;
 
-	background-image: url("img/board.svg");
+	background-image: url("img/boardW.svg");
 	background-position: center;
   	background-repeat: no-repeat;
   	background-size: cover;
@@ -106,13 +135,9 @@ header * {
 .board *{
 	width:  100%;
 	height: 100%;
-	transition: all 150ms;
-	color: rgba(0,0,0,0.36);
-	font-size: 12px;
-	text-align: center;
+	color: rgba(0,0,0,0.17);
 	display: flex;
-	justify-content: center;
-	align-items: center;
+
 
 	background-position: center;
   	background-repeat: no-repeat;
@@ -120,13 +145,26 @@ header * {
 }
 
 .board *:hover{
-	box-shadow: 1px 1px 12px rgba(0,0,0,0.17);
-	background-color: rgba(0, 255, 170, 0.514);
+	/* background-color: rgba(50, 140, 255, 0.5); */
+	outline: dashed 4px rgb(50, 140, 255);
 	cursor: pointer;
 }
 
 .selected {
-	box-shadow: 1px 1px 12px rgba(0,0,0,0.17);
-	background-color: rgba(255, 196, 0, 0.863);
-	transition: all 150ms;
+
+	/* background-color: rgba(78, 184, 255, 0.5); */
+	box-shadow: inset 0 0 0 4px rgb(50, 140, 255);
+	/* outline: 2px solid rgb(50, 140, 255); */
+	border-radius: 0px;
+}
+
+#pointer{
+	height: 48px;
+	width: 48px;
+	background-position: center;
+  	background-repeat: no-repeat;
+	background-size: cover;
+	transform:translate(-50%,-50%);
+	position:absolute;
+	pointer-events: none;
 }

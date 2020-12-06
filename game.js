@@ -1,4 +1,15 @@
-// Create a fucking board
+
+// Utility
+// Set pointer to follow mouse
+let pointer = document.getElementById('pointer');
+const onMouseMove = (e) =>{
+  pointer.style.left = e.pageX + 'px';
+  pointer.style.top = e.pageY + 'px';
+}
+document.addEventListener('mousemove', onMouseMove);
+
+// Game
+// Create a board
 function genBoard(){
 
     var rows = ["row8","row7","row6","row5","row4","row3","row2","row1"]
@@ -14,7 +25,7 @@ function genBoard(){
             cell.id=`${rowId}${columns[b]}`
             cell.classList="blank"
             cell.setAttribute("onclick", "select(this)")
-            cell.innerHTML = `${columns[b].split('')[3]}${rowId.split('')[3]}`;
+            // cell.innerHTML = `${columns[b].split('')[3]}${rowId.split('')[3]}`
 
             document.querySelector(".board").appendChild(cell)
         }
@@ -23,51 +34,89 @@ function genBoard(){
 
 genBoard()
 
+// Manipulate the board
 var targetElem = null
-var sourceElem = null
+var previousCell = null
+var storedFigure = null
 
-function moveClass(elem){
-    sourceElem = document.getElementById(elem.id)
-    targetElem.classList = elem.classList[0]
-    targetElem = null;
+//STOR FIGURE
+function storeClass(elem){
+    storedFigure = document.getElementById(elem.id).classList[0]
+
+    //Remove selection
+    if(previousCell !== null){
+        previousCell.classList.remove('selected') 
+    }
+    previousCell = null
+
+    //Set pointer indicator
+    if(storedFigure === 'blank'){
+        document.getElementById('pointer').classList = 'deleteIco'
+    }
+    else {
+        document.getElementById('pointer').classList = storedFigure
+    }
+
+    // notify(storedFigure, 'save') 
 }
 
-function select(elem) {
-    
-    // Clear selection from previous cell
-    if(sourceElem !== null){
-        sourceElem.classList.remove('selected')
+//NOTIFICATIONS
+function notify(obj, method){
+    var status = document.getElementById('status')
+
+    if(typeof obj !== 'string'){return}
+
+    if(method === 'save'){
+        status.innerHTML = `Saved ${obj.toUpperCase()}, click on the cell to place the figure.`
     }
+    else if(method === 'paste'){
+        status.innerHTML = `${obj.toUpperCase()} placed.`
+    }
+}
+
+// MAIN
+function select(elem) {
+    var selectedCell = document.getElementById(elem.id)
+
+    //Clear pointer
+    document.getElementById('pointer').classList = ''
+
+    // Place figure
+    if(storedFigure !== null){
+        document.getElementById(elem.id).classList = storedFigure
+
+        // notify(storedFigure, 'paste')
+        storedFigure = null
+
+        if(previousCell !== selectedCell){
+            previousCell.classList = 'blank'
+        }
+
+        //Set pointer indicator
+        document.getElementById('pointer').classList = 'blank'
+    }
+
+    // Store figure
+    else if(selectedCell.classList[0] !== 'blank'){
+        storedFigure = document.getElementById(elem.id).classList[0]
+        selectedCell.classList = 'blank'
+
+        //Set pointer indicator
+        document.getElementById('pointer').classList = storedFigure
+
+        // notify(storedFigure, 'save')
+    }
+
+    // Clear selection from previous cell
+    if(previousCell !== null){
+        previousCell.classList.remove('selected') 
+    }
+
+    // Overwrite source element
+    previousCell = document.getElementById(elem.id)
     
     // New selection
     document.getElementById(elem.id).classList.add("selected"); 
-
-    
-    //Add figures
-    if(sourceElem !== null && sourceElem.classList[0] !== 'blank'){
-        document.getElementById(elem.id).classList.add(sourceElem.classList[0])
-        document.getElementById(elem.id).classList.remove('blank')
-        console.log(sourceElem)
-    }
-    
-    // Overwrite source element
-    sourceElem = document.getElementById(elem.id)
-    
-    //Move pieces
-
-    
-    // Save cell as target
-    targetElem = document.getElementById(elem.id)
-
-
-    // if(targetElem !== null && elem.classList !== 'blank'){
-    //     selectedCell = document.getElementById(elem.id)
-    //     selectedCell.classList = targetElem.classList
-    //     targetElem.classList = 'blank'
-    //     // targetElem = null
-    // }
-    // else{
-          
-
-    // }
 }
+
+
