@@ -87,13 +87,14 @@ header img{
 .board-container{
 	margin: auto;
 	display: flex;
-	flex-direction: column;
 }
 
 .figure-menu{
 	display: flex;
-	margin: 0 auto;
-	width: calc(48px * 7 + 28px);
+	flex-direction: column;
+	margin: auto 24px;
+	height: calc(48px * 7 + 28px);
+	width: calc(48px * 2 + 4px);
 	flex-wrap: wrap;
 	gap: 4px;
 }
@@ -120,8 +121,8 @@ header img{
 }
 
 .board {
-	min-width: 95vw;
-	min-height: 95vw;
+	width: 95vw;
+	height: 95vw;
 	max-width:  544px;
 	max-height: 544px;
 

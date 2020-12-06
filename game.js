@@ -52,6 +52,7 @@ function storeClass(elem){
     //Set pointer indicator
     if(storedFigure === 'blank'){
         document.getElementById('pointer').classList = 'deleteIco'
+        document.getElementById('status').innerHTML = 'Click on the cell to clear it.'
     }
     else {
         document.getElementById('pointer').classList = storedFigure
@@ -80,6 +81,8 @@ function select(elem) {
 
     //Clear pointer
     document.getElementById('pointer').classList = ''
+    //Clear status
+    document.getElementById('status').innerHTML = ''
 
     // Place figure
     if(storedFigure !== null){
