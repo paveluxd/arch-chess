@@ -120,8 +120,11 @@ header img{
 }
 
 .board {
-	width:  544px;
-	height: 544px;
+	min-width: 95vw;
+	min-height: 95vw;
+	max-width:  544px;
+	max-height: 544px;
+
 	border-radius: 4px;
 	margin: 12px auto;
 
