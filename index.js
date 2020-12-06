@@ -5,7 +5,8 @@ var socket = require('socket.io')
 var app = express()
 
 //Listen to port number
-var server = app.listen(4000, function(){
+// process.env.PORT -> herokus var for port
+var server = app.listen(process.env.PORT || 4000, function(){
     console.log('XDXD PORT 4000')
 })
 
