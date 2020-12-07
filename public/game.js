@@ -82,6 +82,7 @@ function convertBoardToString(){
 }
 
 // Generate board from string
+var selectedCell = null
 function genBoardFromString(string){
 
     //Board nodes object
@@ -92,6 +93,20 @@ function genBoardFromString(string){
         boardObj[i].classList = boardFigureClasses[i]
     }
 
+    // Reset selection
+    if(selectedCell !== null){
+        selectedCell.classList.add("selected");
+    }
+}
+
+function clearCell(){
+    document.querySelector('.selected').classList = 'blank'
+    
+    // Reset pointer indicator
+    document.getElementById('pointer').classList = 'blank'
+
+    // Reset stored figure
+    storedFigure = null
 }
 
 // GAME
@@ -140,7 +155,7 @@ function storeClass(elem){
 
 // Move
 function select(elem) {
-    var selectedCell = document.getElementById(elem.id)
+    selectedCell = document.getElementById(elem.id)
 
     //Clear pointer
     document.getElementById('pointer').classList = ''
@@ -158,7 +173,7 @@ function select(elem) {
             previousCell.classList = 'blank'
         }
 
-        //Set pointer indicator
+        //Reset pointer indicator
         document.getElementById('pointer').classList = 'blank'
 
         // Store board state as a string
@@ -186,6 +201,5 @@ function select(elem) {
     previousCell = document.getElementById(elem.id)
     
     // New selection
-    document.getElementById(elem.id).classList.add("selected"); 
-
+    document.getElementById(elem.id).classList.add("selected");
 }
