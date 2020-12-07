@@ -14,6 +14,8 @@ var server = app.listen(process.env.PORT || 4000, function(){
 app.use(express.static('public'))
 
 var players = []
+var boardState = 
+'blank blank blank blank blank blank blank blank blank blank blank blank blank blank pawn blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank '
 
 // SERVER SIDE SOCKET
 // Specifies the server you want to work with, in this case our express server
@@ -23,15 +25,13 @@ io.on('connection', function(socket){
     //Connect
     console.log('Connected', socket.id)
 
+    // Record player that joined
     players.push(socket.id)
     io.sockets.emit('playerJoined', players)
-        
-    //Emit board
-    socket.on('emitBoard', function(data){
-        io.sockets.emit('emitBoard', data)
-        console.log('Board sent')
-    })
 
+    // Set board state
+    io.sockets.emit('emitBoard', boardState)
+        
     //Disconnect
     socket.on('disconnect', function() {
         const index = players.indexOf(socket.id);
@@ -41,6 +41,13 @@ io.on('connection', function(socket){
 
         io.sockets.emit('playerLeft', players)
         console.log('Got disconnect!', socket.id); 
+    })
+
+    //Emit board
+    socket.on('emitBoard', function(data){
+        io.sockets.emit('emitBoard', data)
+        boardState = data
+        console.log('Board sent')
     })
 }) 
 

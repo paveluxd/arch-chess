@@ -19,7 +19,7 @@ players = []
 
 socket.on('playerJoined', function(data){    
     players = data
-    console.log(data)
+    // console.log(data)
     updatePlayerList()
 })
 
