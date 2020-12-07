@@ -14,7 +14,7 @@ socket.on('emitBoard', function(data){
     genBoardFromString(data)
 })
 
-// Player mangement -
+// Player mangement
 players = []
 
 socket.on('playerJoined', function(data){    
@@ -172,6 +172,9 @@ function select(elem) {
 
         //Set pointer indicator
         document.getElementById('pointer').classList = storedFigure
+
+        // Store board state as a string
+        convertBoardToString()
     }
 
     // Clear selection from previous cell
