@@ -14,7 +14,7 @@ socket.on('emitBoard', function(data){
     genBoardFromString(data)
 })
 
-// Player mangement
+// Player mangement -
 players = []
 
 socket.on('playerJoined', function(data){    
