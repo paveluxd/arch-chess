@@ -301,6 +301,7 @@ function select(elem) {
     document.getElementById(elem.id).classList.add("selected");
 }
 
+// Hide page
 function hide(elem){
     document.getElementById(elem).classList.toggle("hide")
     // console.log(document.getElementById(elem.id))

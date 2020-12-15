@@ -15,7 +15,7 @@ app.use(express.static('public'))
 
 var players = []
 var boardState = 
-'blank blank blank kingW blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank king blank blank blank '
+'blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank blank '
 
 // SERVER SIDE SOCKET
 // Specifies the server you want to work with, in this case our express server
