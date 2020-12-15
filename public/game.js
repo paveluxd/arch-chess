@@ -300,3 +300,8 @@ function select(elem) {
     // New selection
     document.getElementById(elem.id).classList.add("selected");
 }
+
+function hide(elem){
+    document.getElementById(elem).classList.toggle("hide")
+    // console.log(document.getElementById(elem.id))
+}

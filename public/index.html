@@ -17,13 +17,19 @@
       <img src="./img/logo.svg">
       <p id="status"></p>
       <p id="players"></p>
-      <button id="blank" class="blank" onclick="clearCell()">
+      <button id="blank" class="blank" style="padding: 0px;" onclick="clearCell()">
         <img style="margin: auto; height: 48px;" src="./img/delete.svg" alt="">
+      </button>
+      <button onclick="hide('guideImage')">
+        Custom figure movement
       </button>
       
     </header>
 
     <div id='pointer' class=""></div>
+    <div id="guideImage" class="guideImage hide" onclick="hide('guideImage')">
+      <img src="https://cdn.discordapp.com/attachments/783348715607031828/788330334181523496/Screenshot_2020-12-15_at_10.02.49.png" alt="">
+    </div>
 
     <div class="board-container">
       <div style="margin: auto 0;">
