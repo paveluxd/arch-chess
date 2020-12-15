@@ -46,7 +46,6 @@
 /* Main css */
 body {
 	display: flex;
-	flex-direction: column;
 	width:  100vw;
 	min-height: 100vh;
 	font-family: sans-serif;
@@ -97,6 +96,7 @@ header img{
 	width: calc(48px * 2 + 4px);
 	flex-wrap: wrap;
 	gap: 4px;
+	color: rgba(0, 0, 0, 0.54);
 }
 
 /* Hides menu */

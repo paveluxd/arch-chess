@@ -81,6 +81,81 @@ function convertBoardToString(){
     emitBoard(boardStateString)
 }
 
+var compCostWhite
+var compCostBlack
+var figureCost = [
+    {
+        name: 'pawn',
+        nameWhite: 'pawnW',
+        cost: 2
+    },
+    {
+        name: 'knight',
+        nameWhite: 'knightW',
+        cost: 4
+    },
+    {
+        name: 'bishop',
+        nameWhite: 'bishopW',
+        cost: 5
+    },
+    {
+        name: 'rook',
+        nameWhite: 'rookW',
+        cost: 7
+    },
+    {
+        name: 'queen',
+        nameWhite: 'queenW',
+        cost: 10
+    },
+    {
+        name: 'king',
+        nameWhite: 'kingW',
+        cost: 0
+    },
+    {
+        name: 'necr',
+        nameWhite: 'necrW',
+        cost: 3
+    },
+    {
+        name: 'rogue',
+        nameWhite: 'rogueW',
+        cost: 7
+    },
+    {
+        name: 'archer',
+        nameWhite: 'archerW',
+        cost: 4
+    },
+    {
+        name: 'bomb',
+        nameWhite: 'bombW',
+        cost: 2
+    },
+    {
+        name: 'ballista',
+        nameWhite: 'ballistaW',
+        cost: 2
+    },
+    {
+        name: 'portal',
+        nameWhite: 'portalW',
+        cost: 3
+    },
+    {
+        name: 'wall',
+        nameWhite: 'wallW',
+        cost: 1
+    },
+    {
+        name: 'prince',
+        nameWhite: 'princeW',
+        cost: 5
+    },
+]
+
 // Generate board from string
 var selectedCell = null
 function genBoardFromString(string){
@@ -89,8 +164,24 @@ function genBoardFromString(string){
     var boardObj = document.querySelector('.board').childNodes
     var boardFigureClasses = string.split(' ')
 
+    //Reset board cost
+    compCostWhite = 0
+    compCostBlack = 0
+
     for( i = 0; i < boardObj.length ; i++ ){
+        //Add figure
         boardObj[i].classList = boardFigureClasses[i]
+
+        //Calculate figure cost
+        if(boardFigureClasses[i] !== 'blank' && boardFigureClasses[i].includes('W')){
+            // console.log(figureCost.filter(x => x.nameWhite === boardFigureClasses[i])[0].cost)
+            compCostWhite += figureCost.filter(x => x.nameWhite === boardFigureClasses[i])[0].cost
+            document.getElementById('compCostWhite').innerHTML = `Comp cost: ${compCostWhite}`
+        }
+        else if (boardFigureClasses[i] !== 'blank') {
+            compCostBlack += figureCost.filter(x => x.name === boardFigureClasses[i])[0].cost
+            document.getElementById('compCostBlack').innerHTML = `Comp cost: ${compCostBlack}`
+        }
     }
 
     // Reset selection
@@ -130,7 +221,13 @@ function genBoard(){
 
             document.querySelector(".board").appendChild(cell)
         }
-    }  
+    }
+    
+    //Add cost to figures
+    for(i=0; i < figureCost.length; i++){
+        document.getElementById(figureCost[i].nameWhite).innerHTML = figureCost[i].cost
+        document.getElementById(figureCost[i].name).innerHTML = figureCost[i].cost
+    }
 }
 genBoard()
 
